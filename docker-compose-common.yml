@@ -1,0 +1,6 @@
+commonredis:
+    image: redis
+
+commonworker:
+    build: .
+
