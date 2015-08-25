@@ -1,7 +1,12 @@
 # example-celerydocker
 An example of using celery with docker
 
-commands:
+## Requirement:
+
+* docker
+* docker-compose
+
+## Commands:
 
     $ docker-compose up -d
     $ docker-compose scale worker=3 # Using 3 containers to share tasks.
