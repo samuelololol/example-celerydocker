@@ -9,7 +9,8 @@ An example of using celery with docker
 ## Commands:
 
     (optional, add redis ip to /etc/hosts)
-    $ echo "$(docker inspect -f '{{ .NetworkSettings.IPAddress }}'  examplecelerydocker_redis_1) redis" >> /etc/hosts
+    $ echo "$(docker inspect -f '{{ .NetworkSettings.IPAddress }}'  \
+            examplecelerydocker_redis_1) redis" >> /etc/hosts
     
     
     $ docker-compose up -d
