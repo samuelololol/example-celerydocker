@@ -1,0 +1,11 @@
+input {
+    udp {
+        codec => json
+        'port' => "9999"
+    }
+}
+output {
+    elasticsearch {
+        host => elasticsearch
+    }
+}

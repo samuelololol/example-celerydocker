@@ -1,0 +1,3 @@
+FROM python:2.7-onbuild
+MAINTAINER samuelololol <samuelololol@gmail.com>
+CMD ["/usr/src/app/test_celery.sh"]

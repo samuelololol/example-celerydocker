@@ -4,3 +4,14 @@ commonredis:
 commonworker:
     build: .
 
+commonlogstash:
+    image: logstash
+    command: logstash -f /config-dir/logstash.yml
+
+commonelasticsearch:
+    image: elasticsearch
+
+commontester:
+    dockerfile: tester_Dockerfile
+    build: .
+

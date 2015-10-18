@@ -10,3 +10,30 @@ worker:
         service: commonworker
     links:
         - redis
+        - logstash
+
+logstash:
+    extends:
+        file: docker-compose-common.yml
+        service: commonlogstash
+    volumes:
+        - .:/config-dir
+    links: 
+        - elasticsearch
+
+elasticsearch:
+    extends:
+        file: docker-compose-common.yml
+        service: commonelasticsearch
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+
+tester:
+    extends:
+        file: docker-compose-common.yml
+        service: commontester
+    links:
+        - redis
+        - worker
+        - logstash

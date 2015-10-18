@@ -1,3 +1,4 @@
 celery
 ipython
+celstash
 redis
