@@ -1,6 +1,9 @@
 # example-celerydocker
 An example of using celery with docker
 
+The celery workers' log will be transfered to elasticsearch via logstash.
+log link: [http://localhost:9200/_search](http://localhost:9200/_search)
+
 ## Requirement:
 
 * docker
