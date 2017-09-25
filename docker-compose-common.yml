@@ -1,17 +1,19 @@
-commonredis:
-    image: redis
-
-commonworker:
-    build: .
-
-commonlogstash:
-    image: logstash
-    command: logstash -f /config-dir/logstash.yml
-
-commonelasticsearch:
-    image: elasticsearch
-
-commontester:
-    dockerfile: tester_Dockerfile
-    build: .
-
+version: '2'
+services:
+    commonredis:
+        image: redis
+    
+    commonworker:
+        build: .
+    
+    commonlogstash:
+        image: logstash
+        command: logstash -f /config-dir/logstash.yml
+    
+    commonelasticsearch:
+        image: elasticsearch
+    
+    commontester:
+        build:
+            context: .
+            dockerfile: tester_Dockerfile

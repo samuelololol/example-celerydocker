@@ -1,39 +1,41 @@
-redis:
-    extends:
-        file: docker-compose-common.yml
-        service: commonredis
-    ports:
-        - "127.0.0.1:6379:6379"
-worker:
-    extends:
-        file: docker-compose-common.yml
-        service: commonworker
-    links:
-        - redis
-        - logstash
-
-logstash:
-    extends:
-        file: docker-compose-common.yml
-        service: commonlogstash
-    volumes:
-        - .:/config-dir
-    links: 
-        - elasticsearch
-
-elasticsearch:
-    extends:
-        file: docker-compose-common.yml
-        service: commonelasticsearch
-    ports:
-        - "9200:9200"
-        - "9300:9300"
-
-tester:
-    extends:
-        file: docker-compose-common.yml
-        service: commontester
-    links:
-        - redis
-        - worker
-        - logstash
+version: '2'
+services:
+    redis:
+        extends:
+            file: docker-compose-common.yml
+            service: commonredis
+        ports:
+            - "127.0.0.1:6379:6379"
+    worker:
+        extends:
+            file: docker-compose-common.yml
+            service: commonworker
+        links:
+            - redis
+            - logstash
+    
+    logstash:
+        extends:
+            file: docker-compose-common.yml
+            service: commonlogstash
+        volumes:
+            - .:/config-dir
+        links: 
+            - elasticsearch
+    
+    elasticsearch:
+        extends:
+            file: docker-compose-common.yml
+            service: commonelasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+    
+    tester:
+        extends:
+            file: docker-compose-common.yml
+            service: commontester
+        links:
+            - redis
+            - worker
+            - logstash
